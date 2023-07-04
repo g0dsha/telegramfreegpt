@@ -1,5 +1,5 @@
 from telegram import Update
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+from telegram.ext import Updater, CommandHandler, MessageHandler, filters
 import requests
 import os
 
@@ -24,7 +24,7 @@ def main():
     start_handler = CommandHandler('start', start)
     dispatcher.add_handler(start_handler)
 
-    message_handler = MessageHandler(Filters.text & ~Filters.command, message_handler)
+    message_handler = MessageHandler(filters.TEXT & ~filters.COMMAND, message_handler)
     dispatcher.add_handler(message_handler)
 
     updater.start_polling()
